@@ -1,6 +1,6 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
-  
+  # hi
     def index 
         @hosts = Host.all
         render json: @hosts
