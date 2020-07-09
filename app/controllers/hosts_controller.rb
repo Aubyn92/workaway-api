@@ -1,22 +1,29 @@
 class HostsController < ApplicationController
+  before_action :set_host, only: [:show, :update, :destroy]
+  
     def index 
         @hosts = Host.all
         render json: @hosts
       end 
 
-      def show 
+      def show
         render json: @host
       end 
     
-      def create 
+      def create
         Host.create(host_params)
         render json: "host created", status: 200 
       end 
     
-      def update 
+      def update
         @host.update(host_params)
-        render json: "host updated", status: 200
+        render json: 'host updated', status: :ok
       end 
+
+      # def update 
+      #   @host.update(host_params)
+      #   render json: "host updated", status: 200
+      # end 
     
       def destroy
         @host.destroy
