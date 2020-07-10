@@ -14,7 +14,10 @@ class HostsController < ApplicationController
       end 
     
       def create
-        current_user.host.create(host_params)
+        # pp current_user
+        host = Host.new(host_params)
+        host.user = current_user
+        host.save
         render json: "host created", status: 200 
       end 
     
