@@ -1,7 +1,9 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
   before_action :authenticate_user, only: [:update,:create,:destroy]
-  
+ 
+ 
+
     def index 
         @hosts = Host.all
         render json: @hosts
