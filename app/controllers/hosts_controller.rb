@@ -1,6 +1,9 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
-  # hi
+  before_action :authenticate_user, only: [:update,:create,:destroy]
+ 
+ 
+
     def index 
         @hosts = Host.all
         render json: @hosts
@@ -11,7 +14,7 @@ class HostsController < ApplicationController
       end 
     
       def create
-        Host.create(host_params)
+        current_user.host.create(host_params)
         render json: "host created", status: 200 
       end 
     
